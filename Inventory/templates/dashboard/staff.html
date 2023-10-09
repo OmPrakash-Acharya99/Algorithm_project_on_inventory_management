@@ -1,0 +1,42 @@
+{% extends 'partials/base.html' %}
+{% block title %} Student Page{% endblock %}
+
+{% block content %}
+{% include 'partials/topnav.html' %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-info text-white">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for worker in workers %}
+                    <tr>
+                        <td>
+                            <a class="btn btn-info btn-sm" href="{% url 'dashboard-staff-detail' worker.id %}">View</a>
+                        </td>
+                        <td>{{ worker.username }}</td>
+                        <td>{{ worker.profile.phone }}</td>
+                        <td>{{ worker.email }}</td>
+                        <td>
+                            <a class="btn btn-danger btn-sm ml-2" href="{% url 'dashboard-staff-delete' worker.id %}">Delete staff</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                
+                </tbody>
+                
+            </table>
+           
+        </div>
+    </div>
+</div>
+{% endblock %}
