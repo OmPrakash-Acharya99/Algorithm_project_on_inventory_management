@@ -1,5 +1,5 @@
 body{
-    background: rgb(230, 227, 227);
+    background: white;
 }
 .my-card:hover{
     transform: scale(1.1);

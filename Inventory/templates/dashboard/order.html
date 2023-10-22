@@ -22,6 +22,13 @@
             </thead>
             <tbody>
               {% for orders in orders %}
+              {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 <tr>
                     <td>{{orders.product}}</td>
                     <td>{{orders.product.category}}</td>
@@ -29,8 +36,9 @@
                     <td>{{orders.staff.username}}</td>
                     <td>{{orders.date}}</td>
                     <td>
-                        <a class="btn btn-info btn-sm mr-2"
-                            href="{%url 'dashboard-order-approve' orders.id %}">Approve</a>
+                    
+                        <a class="btn btn-info btn-sm mr-2" href="">Approve</a>
+
                             <br>
                         <a class="btn btn-danger btn-sm ml-2"
                             href="{%url 'dashboard-order-cancel' orders.id %}">Delete</a>

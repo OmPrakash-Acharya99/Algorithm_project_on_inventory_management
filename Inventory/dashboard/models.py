@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 CATEGORY = (
     ('Statonary', 'Stationary',),
     ('Electronics', 'Electronics',),
-    ('Food', 'Food'), 
+   
 )
 class Product(models.Model):
      name = models.CharField(max_length = 100 , null=True)

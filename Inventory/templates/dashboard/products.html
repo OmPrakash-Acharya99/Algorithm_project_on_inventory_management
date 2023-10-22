@@ -21,6 +21,8 @@
                   {{form|crispy}}
                 <input class="btn btn-success btn-block" type="submit" value="Add">
             </form>
+            <!-- Add this to your template -->
+</form>
         </div>
            
           <form class = " container mt-5" method = "POST" enctype = "multipart/form-data">
@@ -30,12 +32,13 @@
             <br>
             <button type = "submit" class = "btn btn-success">Upload</button>
           </form>
-         
-
-
-
+    
     </div>
     <div class="col-md-8">
+        <form method="post" action="{% url 'export_data_to_excel_from_product' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Export Excel File</button>
+        </form>
         <table class="table bg-white">
             <thead class="bg-info text-white">
                 <tr>
@@ -43,6 +46,18 @@
                     <th scope="col">Category</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Activity</th>
+                    <th ><!-- Add this to your template -->
+                        <form method="get" action="{% url 'dashboard-products' %}">
+                            <label for="sort_by">Sort by:</label>
+                            <select id="sort_by" name="sort_by">
+                                <option value="name" {% if current_sort == 'name' %}selected{% endif %}>Name</option>
+                                <option value="quantity" {% if current_sort == 'quantity' %}selected{% endif %}>Quantity</option>
+                                <option value="category" {% if current_sort == 'category' %}selected{% endif %}>Category</option>
+                            </select>
+                            <button type="submit">Sort</button>
+                        </form>
+                    <th> 
+                    </th>    
                 </tr>
             </thead>
             <tbody>

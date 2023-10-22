@@ -1,16 +1,15 @@
 from django.urls import path
 from. import views
 from django.contrib.auth import views as auth_views
-from .views import export_data_to_excel
-
+from .views import export_data_to_excel,export_data_to_excel_from_product
 urlpatterns =[
     path('', views.index, name='dashboard-index'),
     path('export/', export_data_to_excel, name='export_data_to_excel'),
+    path('export_data_to_excel_from_product/', export_data_to_excel_from_product, name='export_data_to_excel_from_product'),
     path('staff/',views.staff, name = 'dashboard-staff'),
     path('staff/detail/<int:pk>/', views.staff_detail, name='dashboard-staff-detail'),
     path('order/update/<int:pk>/', views.order_update, name='dashboard-order-update'),
     path('order/delete/<int:pk>/', views.order_delete, name='dashboard-order-delete'),
-    path('order/approve/<int:pk>/',views.approve_orders_and_notify , name = 'dashboard-order-approve' ),
     path('order/cancel/<int:pk>/',views.order_cancel, name = 'dashboard-order-cancel'),
     path('staff/delete/<int:pk>/',views.staff_delete, name = 'dashboard-staff-delete'),
     path('product/',views.products, name = 'dashboard-products'),
